@@ -7,7 +7,7 @@ export default function Home() {
     const interval = setInterval(() => {
       const newPost = generatePost();
       setPosts((prev) => [newPost, ...prev]);
-    }, 5 * 60 * 1000); // 5分ごと
+    }, 5 * 60 * 1000);
 
     return () => clearInterval(interval);
   }, []);
@@ -61,21 +61,23 @@ export default function Home() {
   };
 
   return (
-    <main className="p-4 max-w-2xl mx-auto">
-      <h1 className="text-3xl font-bold mb-4">むなしーのAI日記</h1>
-      <p className="mb-6">むなしーが毎5分で勝手に投稿！DMM・楽天・ネタ混合でバズ狙い。</p>
+    <main className="bg-[#f5f5f0] min-h-screen p-6 font-sans text-gray-800">
+      <div className="max-w-3xl mx-auto">
+        <h1 className="text-4xl font-bold mb-2 text-center text-[#4a4a2f]">むなしーのAI日記</h1>
+        <p className="text-center text-[#7b7b5b] mb-6">むなしーが自動で書く、ちょっと和やかな話題たち。</p>
 
-      <section className="mt-8">
-        <h2 className="text-xl font-bold mb-2">公開記事一覧</h2>
-        {posts.length === 0 && <p>まだ投稿はありません（5分ごとに自動投稿開始）</p>}
-        {posts.map((post, i) => (
-          <div key={i} className="border rounded p-4 mb-4 bg-white shadow">
-            <h3 className="text-lg font-semibold">{post.title}</h3>
-            <p className="text-sm text-gray-500">{post.date}</p>
-            <p className="mt-2 whitespace-pre-wrap">{post.body}</p>
-          </div>
-        ))}
-      </section>
+        <section className="space-y-6">
+          <h2 className="text-2xl font-semibold border-b border-[#dcdccf] pb-1">今日の記事</h2>
+          {posts.length === 0 && <p className="text-[#7b7b5b]">初投稿をお楽しみに（5分ごとに更新されます）</p>}
+          {posts.map((post, i) => (
+            <div key={i} className="bg-white border border-[#e4e4d4] p-5 rounded-xl shadow-sm">
+              <h3 className="text-xl font-semibold text-[#4a4a2f]">{post.title}</h3>
+              <p className="text-xs text-[#9b9b7a]">{post.date}</p>
+              <p className="mt-3 whitespace-pre-wrap leading-relaxed">{post.body}</p>
+            </div>
+          ))}
+        </section>
+      </div>
     </main>
   );
 }
