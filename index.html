@@ -1,19 +1,45 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>むなしー自動アフィアプリ</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DMM自動投稿くん - むなしー</title>
+  <style>
+    body { font-family: sans-serif; padding: 1.5rem; background: #f9f9f9; }
+    button { padding: 0.5rem 1rem; font-size: 1rem; }
+    #output { margin-top: 1.5rem; white-space: pre-wrap; background: #fff; padding: 1rem; border-radius: 8px; border: 1px solid #ccc; }
+  </style>
 </head>
-<body style="font-family: sans-serif; padding: 2rem;">
-  <h1>むなしー自動アフィアプリ（フル装備）</h1>
-  <p>このアプリには以下の機能が含まれています：</p>
-  <ul>
-    <li>DMMエロ投稿くん（ID: <b>miyu1352-001</b>）</li>
-    <li>楽天アフィ職人くん</li>
-    <li>X自動連携（将来対応）</li>
-    <li>投稿テンプレ保存＆再利用</li>
-  </ul>
-  <p>※現在はデモページです。チャット＆投稿生成UIはReact側で対応します。</p>
+<body>
+  <h1>DMMエロ投稿くん（仮）</h1>
+  <p>「ネタ×作品紹介」文章を自動生成。下のボタンを押してみて！</p>
+  <button onclick="generatePost()">DMM投稿を生成</button>
+  <div id="output"></div>
+
+  <script>
+    const samples = [
+      {
+        title: "最近この同人、マジで抜けるって噂らしい",
+        desc: "オタク向けと思いきや、文章と絵がエグいほどエロい。\n→ ツンデレJKが押しかけてくるやつ、気づいたら何周もしてた…。",
+        url: "https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2Fproduct%2F6015993%2Fb000ehftx50240%2F&af_id=miyu1352-001"
+      },
+      {
+        title: "【深夜注意】何もかも忘れて抜けるやつ",
+        desc: "こんなに攻める同人見たことない。絵も文もヤバい。\n寝る前に見たらマジで眠れなくなった。",
+        url: "https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2Fproduct%2F6000001%2Fb999abc12345678%2F&af_id=miyu1352-001"
+      },
+      {
+        title: "あえて動画じゃなく“同人”が効く理由",
+        desc: "妄想力が爆発するタイプ。テキストと絵が脳を直接殴ってくる。\nリピート率高すぎて笑った。",
+        url: "https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2Fproduct%2F6000002%2Fb000xyz99900001%2F&af_id=miyu1352-001"
+      }
+    ];
+
+    function generatePost() {
+      const pick = samples[Math.floor(Math.random() * samples.length)];
+      const post = `【${pick.title}】\n${pick.desc}\n\n作品リンク（18禁）\n${pick.url}`;
+      document.getElementById("output").textContent = post;
+    }
+  </script>
 </body>
 </html>
