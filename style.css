@@ -1,0 +1,17 @@
+
+body {
+    font-family: sans-serif;
+    background-color: #fff8f0;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+.logo {
+    width: 200px;
+    margin-bottom: 20px;
+}
