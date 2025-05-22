@@ -1,1 +1,5 @@
-# munashii-blog
+# むなしーAIブログ
+
+- 毎時自動で記事生成
+- Vercelで簡単ホスティング
+- `/api/generate` により新しい記事を追加
